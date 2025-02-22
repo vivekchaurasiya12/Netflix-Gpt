@@ -13,3 +13,8 @@
  - Netflix-gpt
    - search bar
    - movie suggestions
+
+
+
+# Notes
+- Formik a js library for handling form validation for react (Recommended for large forms)
