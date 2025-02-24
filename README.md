@@ -2,6 +2,8 @@
 
 # Features
  - Login/Singup 
+ - Form Validation
+ - use of useRef Hooks
    - after login user redirect to browse page
  - Browse Page(after authentication)
      - header
