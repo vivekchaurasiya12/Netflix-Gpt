@@ -1,8 +1,9 @@
 export const validate = (email, password, fullname, mobile) => {
     const emailRegex = /^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/.test(email);
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password);
-    const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(fullname);
-    const mobileRegex = /^[0-9]{10}$/.test(mobile);
+    const nameRegex = fullname ? /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(fullname) : true;
+    const mobileRegex = mobile ? /^[0-9]{10}$/.test(mobile) : true;
+
     if (!nameRegex) {
         return "Please enter a valid name";
     }
