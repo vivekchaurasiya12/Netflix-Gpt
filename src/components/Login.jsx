@@ -1,8 +1,9 @@
-import React,{use, useState,useRef} from "react";
+import React,{useState,useRef} from "react";
 import Header from "./Header";
 import { validate } from "../utils/validation";
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 const Login =()=>{
   const [signin,setSignin] = useState(true);
   const handleSignIn=()=>{
@@ -15,10 +16,12 @@ const Login =()=>{
   // We use useRef to get the value of the input field it is a hook which gives the refrence of input field
   //other method are make state variable and use onChange event to get the value of input field to perform the same thing
   const password = useRef(null);
+
+  const navigate =useNavigate();
   const handleValidation = ()=>{
 
   // Before signin and signup we validate the data 
-    const message = validate(
+const message = validate(
 email.current.value,
 password.current.value,
 signin ? "" : fullname.current.value,
@@ -35,6 +38,7 @@ signin ? "" : mobile.current.value
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
+    navigate("/browse")
     console.log(user);
     // ...
   })
@@ -52,6 +56,7 @@ signin ? "" : mobile.current.value
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
+    navigate("/browse");
     console.log(user);
     
     // ...
