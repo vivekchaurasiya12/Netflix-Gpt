@@ -1,11 +1,12 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
 
 const Header = () => {
     const navigate = useNavigate();
-    
+    const user = useSelector((state)=>state.user);
     const handleSignout = ()=>{
         signOut(auth).then(()=>{
          navigate("/");
@@ -19,13 +20,16 @@ const Header = () => {
            alt="Netflix Logo" 
            className="w-56 h-auto sm:w-48 md:w-56" 
         />
-        
        
-        
-           <button onClick={handleSignout} className="bg-red-500 text-white px-3 py-1 rounded-md text-sm sm:text-base">
-              Sign Out
-           </button>
-        
+       {user &&
+    //    this div will render when user is either login or signup then it will show the signout button
+        <div className="flex items-center">
+        <img src={user?.photoURL} className="w-6 h-6"/>
+        <button onClick={handleSignout} className="bg-red-500 text-white px-3 py-1 rounded-md text-sm sm:text-base">
+            Sign Out
+        </button>
+        </div>
+}
      </div>
      
      

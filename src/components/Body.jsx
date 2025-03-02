@@ -25,8 +25,8 @@ const Body = ()=>{
       // AS we created the redux store and whenever user signin ,signout and signup we need to dispatch the action everytime so to avoid the complexity firebase provide a API that is onAuthStateChanged to use and call everytime whenver user states changes either user do login loout and signup ,just write once and it will take care of everything
          onAuthStateChanged(auth,(user)=>{
           if(user){
-            const {uid,email,displayname} = user;
-            dispatch(addUser({uid :uid,email:email,displayname:displayname}));
+            const {uid,email,displayName,photoURL} = user;
+            dispatch(addUser({uid :uid,email:email,displayName:displayName, photoURL:photoURL}));
             // navigate("browse")
             //here after dispatching the add user we need user navigate to browse page that is home page but here we can use the navigate function directly as navigate can be used inside the routed component so thats why here we can write
           }else{

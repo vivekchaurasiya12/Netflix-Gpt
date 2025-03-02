@@ -1,9 +1,11 @@
 import React,{useState,useRef} from "react";
 import Header from "./Header";
 import { validate } from "../utils/validation";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 const Login =()=>{
   const [signin,setSignin] = useState(true);
   const handleSignIn=()=>{
@@ -18,6 +20,7 @@ const Login =()=>{
   const password = useRef(null);
 
   const navigate =useNavigate();
+  const dispatch = useDispatch();
   const handleValidation = ()=>{
 
   // Before signin and signup we validate the data 
@@ -38,7 +41,16 @@ signin ? "" : mobile.current.value
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
-    navigate("/browse")
+    updateProfile(user, {
+      displayName: fullname.current.value, photoURL:"https://avatars.githubusercontent.com/u/132990592?v=4"
+    }).then(() => {
+      const {uid,email,displayName,photoURL} = auth.currentUser;
+      dispatch(addUser({uid :uid,email:email,displayName:displayName, photoURL:photoURL}));
+      navigate("/browse")
+    }).catch((error) => {
+      setErrorMessage(error.message);
+    });
+   
     console.log(user);
     // ...
   })
