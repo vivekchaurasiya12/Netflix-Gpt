@@ -2,7 +2,7 @@ export const LOGO = "https://help.nflxext.com/helpcenter/OneTrust/oneTrust_produ
 
 export const BACKGROUND_IMAGE = "https://assets.nflxext.com/ffe/siteui/vlv3/0cf2c109-3af1-4a9d-87d7-aecfac5fe881/web/IN-en-20250217-TRIFECTA-perspective_c3376e06-9aff-4657-aafb-91256a597b7c_large.jpg";
 
-export const IMAGE = "https://cdn-icons-png.flaticon.com/128/1144/1144760.png";
+export const IMAGE = "https://cdn-icons-png.freepik.com/256/9837/9837925.png?ga=GA1.1.366570181.1732464887&semt=ais_hybrid";
 
 export const options = {
     method: 'GET',
@@ -11,3 +11,4 @@ export const options = {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NTFiNjllMjZhMDViMGZlOGM3OTIwY2IxZDQyNzg1ZiIsIm5iZiI6MTc0MTg4NTEzOS44ODgsInN1YiI6IjY3ZDMwZWQzZTE4OGVhYTQ3YzFkZTU2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.N586Vix-3Rn7ioOBkYgKvJr6VYKHQVZzy22yClV2bcw'
     }
   };
+

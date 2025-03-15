@@ -34,7 +34,7 @@ const Header = () => {
       },[]);
 
     return(
-        <div className="absolute px-5 py-2 bg-gradient-to-b from-black to-transparent w-full flex justify-between items-center">      
+        <div className="absolute px-5 py-2 bg-gradient-to-b from-black w-full flex justify-between items-center z-10">      
         <img src={LOGO} 
            alt="Netflix Logo" 
            className="w-56 h-auto sm:w-48 md:w-56" 
@@ -43,7 +43,7 @@ const Header = () => {
        {user &&
     //    this div will render when user is either login or signup then it will show the signout button
         <div className="flex items-center gap-2">
-        <img src={user?.photoURL} alt="image" className="w-6 h-6"/>
+        <img src={user?.photoURL} alt="image" className="w-6 h-6 z-10 "/>
         <button onClick={handleSignout} className="bg-red-500 text-white px-3 py-1 rounded-2xl text-sm sm:text-base">
             Sign Out
         </button>
