@@ -1,31 +1,50 @@
-import { signOut } from "firebase/auth";
+import { signOut,onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-
+import { useSelector,useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { addUser, removeUser } from "../utils/userSlice";
+import {IMAGE, LOGO } from "../utils/constants";
 
 const Header = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const user = useSelector((state)=>state.user);
     const handleSignout = ()=>{
         signOut(auth).then(()=>{
-         navigate("/");
         }).catch((error)=>{
             navigate("/error");
         });
     }
+
+    useEffect(()=>{
+        // AS we created the redux store and whenever user signin ,signout and signup we need to dispatch the action everytime so to avoid the complexity firebase provide a API that is onAuthStateChanged to use and call everytime whenver user states changes either user do login loout and signup ,just write once and it will take care of everything
+         const unsubscribe =  onAuthStateChanged(auth,(user)=>{
+            if(user){
+              const {uid,email,displayName,photoURL} = user;
+              dispatch(addUser({uid :uid,email:email,displayName:displayName, photoURL:IMAGE}));
+               navigate("/browse")
+              //here after dispatching the add user we need user navigate to browse page that is home page but here we can use the navigate function directly as navigate can be used inside the routed component so thats why here we can write
+            }else{
+               dispatch(removeUser());
+               navigate("/")
+            }
+           })
+         return ()=> unsubscribe();
+      },[]);
+
     return(
         <div className="absolute px-5 py-2 bg-gradient-to-b from-black to-transparent w-full flex justify-between items-center">      
-        <img           src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production/consent/87b6a5c0-0104-4e96-a291-092c11350111/01938dc4-59b3-7bbc-b635-c4131030e85f/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" 
+        <img src={LOGO} 
            alt="Netflix Logo" 
            className="w-56 h-auto sm:w-48 md:w-56" 
         />
        
        {user &&
     //    this div will render when user is either login or signup then it will show the signout button
-        <div className="flex items-center">
-        <img src={user?.photoURL} className="w-6 h-6"/>
-        <button onClick={handleSignout} className="bg-red-500 text-white px-3 py-1 rounded-md text-sm sm:text-base">
+        <div className="flex items-center gap-2">
+        <img src={user?.photoURL} alt="image" className="w-6 h-6"/>
+        <button onClick={handleSignout} className="bg-red-500 text-white px-3 py-1 rounded-2xl text-sm sm:text-base">
             Sign Out
         </button>
         </div>

@@ -6,6 +6,7 @@ import {auth} from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { IMAGE,BACKGROUND_IMAGE } from "../utils/constants";
 const Login =()=>{
   const [signin,setSignin] = useState(true);
   const handleSignIn=()=>{
@@ -19,9 +20,9 @@ const Login =()=>{
   //other method are make state variable and use onChange event to get the value of input field to perform the same thing
   const password = useRef(null);
 
-  const navigate =useNavigate();
-  const dispatch = useDispatch();
-  const handleValidation = ()=>{
+ 
+const dispatch = useDispatch();
+const handleValidation = ()=>{
 
   // Before signin and signup we validate the data 
 const message = validate(
@@ -42,16 +43,16 @@ signin ? "" : mobile.current.value
     // Signed up 
     const user = userCredential.user;
     updateProfile(user, {
-      displayName: fullname.current.value, photoURL:"https://avatars.githubusercontent.com/u/132990592?v=4"
+      displayName: fullname.current.value, photoURL:IMAGE
     }).then(() => {
       const {uid,email,displayName,photoURL} = auth.currentUser;
-      dispatch(addUser({uid :uid,email:email,displayName:displayName, photoURL:photoURL}));
-      navigate("/browse")
+      dispatch(addUser({uid :uid,email:email,displayName:displayName, photoURL:IMAGE})); 
+     
     }).catch((error) => {
       setErrorMessage(error.message);
     });
    
-    console.log(user);
+   // console.log(user);
     // ...
   })
   .catch((error) => {
@@ -68,8 +69,8 @@ signin ? "" : mobile.current.value
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    navigate("/browse");
-    console.log(user);
+   
+    //console.log(user);
     
     // ...
   })
@@ -87,7 +88,7 @@ signin ? "" : mobile.current.value
       <Header />
       <div>
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/0cf2c109-3af1-4a9d-87d7-aecfac5fe881/web/IN-en-20250217-TRIFECTA-perspective_c3376e06-9aff-4657-aafb-91256a597b7c_large.jpg"
+          src={BACKGROUND_IMAGE}
           alt="Netflix Background"
           className="w-full min-h-screen"
         />
