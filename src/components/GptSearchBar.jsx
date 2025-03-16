@@ -12,22 +12,25 @@ const GptSearchBar = () => {
 
 
   return (
-    <div className="flex justify-center pt-24">
-      <form className="w-1/2 bg-black grid grid-cols-12" onSubmit={(e) => e.preventDefault()}>
-        <input
-          ref={searchText}
-          type="text"
-          placeholder={lang[langKey].gptSearchPlaceholder}
-          className="col-span-9 p-2 m-2"
-        />
-        <button
-          className="bg-red-600 text-white p-2 rounded-md col-span-3 m-2 px-2 py-2"
-          onClick={handleGeminiSearchClick}
-        >
-          {lang[langKey].search}
-        </button>
-      </form>
-    </div>
+    <div className="flex justify-center pt-16 sm:pt-24">
+    <form
+      className="w-11/12 sm:w-1/2 bg-black grid grid-cols-12"
+      onSubmit={(e) => e.preventDefault()}
+    >
+      <input
+        ref={searchText}
+        type="text"
+        placeholder={lang[langKey].gptSearchPlaceholder}
+        className="col-span-9 p-2 m-2 text-sm sm:text-base"
+      />
+      <button
+        className="bg-red-600 text-white p-2 rounded-md col-span-3 m-2 px-2 py-2 text-sm sm:text-base"
+        onClick={handleGeminiSearchClick}
+      >
+        {lang[langKey].search}
+      </button>
+    </form>
+  </div>
   );
 };
 

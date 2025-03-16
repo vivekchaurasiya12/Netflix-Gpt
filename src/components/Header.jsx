@@ -46,16 +46,16 @@ const Header = () => {
         }
 
     return(
-        <div className="absolute px-5 py-2 bg-gradient-to-b from-black w-full flex justify-between items-center z-10">      
+        <div className="absolute px-5 py-2 bg-gradient-to-b from-black w-full flex  justify-between items-center z-10">      
         <img src={LOGO} 
            alt="Netflix Logo" 
-           className="w-48 h-auto sm:w-48 md:w-56" 
+           className="w-32 h-auto sm:w-32 md:w-56" 
         />
        
        {user &&
     //    this div will render when user is either login or signup then it will show the signout button
-        <div className="flex items-center gap-2">
-            {showGptSearch &&  <select className="bg-gray-500 text-white p-1 rounded-2xl" onChange={handleLanguageChange}>
+        <div className="flex justify-center items-center gap-2 mt-4 sm:mt-0">
+            {showGptSearch &&  <select className="bg-gray-500 text-white p-1 rounded-2xl text-sm sm:text-base" onChange={handleLanguageChange}>
                 {
                     SUPPORTED_LANGUAGES.map((language)=>(
                         <option key = {language.label} value={language.identifier} >{language.label}</option>
@@ -65,9 +65,9 @@ const Header = () => {
             </select>}
            
 
-        <button onClick={handleGptSearchClick} className="bg-red-500 text-white px-3 py-1 rounded-2xl text-sm sm:text-base">{showGptSearch ?  "Home Page":"GPT Search" } </button>
-        <img src={user?.photoURL} alt="image" className="w-6 h-6 z-10 "/>
-        <button onClick={handleSignout} className="bg-red-500 text-white px-3 py-1 rounded-2xl text-sm sm:text-base">
+        <button onClick={handleGptSearchClick} className="bg-red-500 text-white  px-3 py-1 rounded-2xl text-xs sm:text-base">{showGptSearch ?  "Home Page":"GPT Search" } </button>
+      
+        <button onClick={handleSignout} className="bg-red-500 text-white px-3 py-1 rounded-2xl text-xs sm:text-base">
             Sign Out
         </button>
         </div>
