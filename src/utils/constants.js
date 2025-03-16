@@ -8,11 +8,11 @@ export const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NTFiNjllMjZhMDViMGZlOGM3OTIwY2IxZDQyNzg1ZiIsIm5iZiI6MTc0MTg4NTEzOS44ODgsInN1YiI6IjY3ZDMwZWQzZTE4OGVhYTQ3YzFkZTU2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.N586Vix-3Rn7ioOBkYgKvJr6VYKHQVZzy22yClV2bcw'
+      Authorization: 'Bearer  ' + import.meta.env.VITE_APP_TMDB_KEY,
     }
   };
 
-export const IMAGE_CDN_URL =" https://image.tmdb.org/t/p/w500";
+export const IMAGE_CDN_URL ="https://image.tmdb.org/t/p/w500";
 
 export const SUPPORTED_LANGUAGES = [
     {
@@ -29,5 +29,5 @@ export const SUPPORTED_LANGUAGES = [
     }
 ]
 
-export const GEN_API = "AIzaSyDhPw2UDWZahtDBAIPl5ov6HcXh4vwPaTU";
+export const GEN_API = import.meta.env.VITE_APP_GEN_KEY
 
