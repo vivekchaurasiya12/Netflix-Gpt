@@ -29,3 +29,5 @@ export const SUPPORTED_LANGUAGES = [
     }
 ]
 
+export const GEN_API = "AIzaSyDhPw2UDWZahtDBAIPl5ov6HcXh4vwPaTU";
+

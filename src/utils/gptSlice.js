@@ -4,14 +4,21 @@ const gptSlice = createSlice({
     name:'gpt',
     initialState:{
         showGptSearch : false,
+        gptMovieResults : null,
+        movieName: null,
     },
     reducers:{
         toggleGptSearchView:(state)=>{
             state.showGptSearch = !state.showGptSearch;
         },
+        addGptMovieResults:(state,action)=>{
+            const {movieName,gptMovieResults} = action.payload;
+            state.movieName = movieName;
+            state.gptMovieResults = gptMovieResults;
+        },     
     }
 })
-export const {toggleGptSearchView} = gptSlice.actions;
+export const {toggleGptSearchView,addGptMovieResults} = gptSlice.actions;
 export default gptSlice.reducer;
 // here we are importing the createSlice method from redux toolkit
 // we are creating a slice using the createSlice method
