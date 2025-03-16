@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addNowPlayingMovies } from '../utils/moviesSlice';
 import { options } from '../utils/constants';
 
@@ -8,6 +8,9 @@ import { options } from '../utils/constants';
 
 const useNowPlayingMovies = () => {
     const dispatch = useDispatch();
+
+    const nowPlayingMovies = useSelector((store)=> store.movies.nowPlayingMovies);
+
    const getNowPlayingMovies = async ()=>{
     const data = await fetch('https://api.themoviedb.org/3/movie/now_playing?page=1', options);
     const json = await data.json();
@@ -16,7 +19,9 @@ const useNowPlayingMovies = () => {
    }
 
     useEffect(()=>{
-        getNowPlayingMovies();
+        !nowPlayingMovies && getNowPlayingMovies();
+        //if nowplayingmovies is not null then we dont need to make a api call that is called memoization
+        //means we are stopting the uneccessary api calling
     },[]);
 }
 
