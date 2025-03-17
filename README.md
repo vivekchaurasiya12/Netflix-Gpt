@@ -67,7 +67,7 @@ Netflix-GPT is a React-based web application that mimics Netflix's functionality
    - Includes a dynamic background and responsive layout.
 
 4. **Netflix-GPT**:
-   - Users can search for movies using the GPT-powered search bar.
+   - Users can search for movies using the AI-powered search bar.
    - Displays AI-powered movie suggestions.
 
 ---
@@ -76,7 +76,7 @@ Netflix-GPT is a React-based web application that mimics Netflix's functionality
 
 ### Prerequisites
 - Node.js and npm installed on your system.
-- TMDB API key and OpenAI GPT API key.
+- TMDB API key and GEMINI API key.
 
 ### Installation
 1. Clone the repository:
