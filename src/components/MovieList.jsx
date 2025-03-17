@@ -1,7 +1,7 @@
 import MovieCard from "./MovieCard";
 
 const MovieList = ({title,movies}) => {
-   //console.log(movies);
+  // console.log(movies);
    if (!movies || movies.length === 0) return null;
   return (
     <div className="py-2 px-2 sm:px-4">
@@ -16,7 +16,7 @@ const MovieList = ({title,movies}) => {
   
           return (
             <div key={movie.id} className="min-w-[120px] sm:min-w-[160px]">
-              <MovieCard posterPath={poster} />
+              <MovieCard posterPath={poster} movieId={movie.id} />
             </div>
           );
         })}

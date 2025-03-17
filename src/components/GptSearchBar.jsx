@@ -1,14 +1,21 @@
 import { useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useSearchMovie from "../hooks/useSearchMovie";
 import useGeminiApi from "../hooks/useGeminiApi";
 const GptSearchBar = () => {
   const langKey = useSelector(store => store.config.lang);
   const searchText = useRef(null);
- 
-  const searchMovie = useSearchMovie(); // Assuming this returns searchMovie function
-  const handleGeminiSearchClick = useGeminiApi(searchText, searchMovie); // Pass searchText & searchMovie here
+  const [loading, setLoading] = useState(false); 
+  const searchMovie = useSearchMovie(); 
+  const handleGeminiSearchClick = useGeminiApi(searchText, searchMovie); // 
+
+  const handleSearchClick = async () => {
+    setLoading(true); 
+    searchText.current.value = "";
+    await handleGeminiSearchClick();
+    setLoading(false);
+  };
 
 
   return (
@@ -22,12 +29,14 @@ const GptSearchBar = () => {
         type="text"
         placeholder={lang[langKey].gptSearchPlaceholder}
         className="col-span-9 p-2 m-2 text-sm sm:text-base"
+        disabled={loading} 
       />
       <button
         className="bg-red-600 text-white p-2 rounded-md col-span-3 m-2 px-2 py-2 text-sm sm:text-base"
-        onClick={handleGeminiSearchClick}
+        onClick={handleSearchClick}
+        disabled={loading} 
       >
-        {lang[langKey].search}
+         {loading ? "Loading..." : lang[langKey].search}
       </button>
     </form>
   </div>

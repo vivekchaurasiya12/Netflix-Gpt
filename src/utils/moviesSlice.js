@@ -19,7 +19,7 @@ const moviesSlice = createSlice({
         addUpcomingMovies:(state,action)=>{
             state.nowUpcomingMovies = action.payload;
         },
-        addTrailerVideo: (state, action) => {
+        addTrailerVideo: (state,action) => {
             state.trailerVideo = action.payload;
         },
     }

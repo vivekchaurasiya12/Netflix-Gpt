@@ -5,12 +5,12 @@ export const BACKGROUND_IMAGE = "https://assets.nflxext.com/ffe/siteui/vlv3/0cf2
 export const IMAGE = "https://cdn-icons-png.freepik.com/256/9837/9837925.png?ga=GA1.1.366570181.1732464887&semt=ais_hybrid";
 
 export const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer  ' + import.meta.env.VITE_APP_TMDB_KEY,
-    }
-  };
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: `Bearer ${import.meta.env.VITE_APP_TMDB_KEY}`, // Ensure this is correct
+  },
+};
 
 export const IMAGE_CDN_URL ="https://image.tmdb.org/t/p/w500";
 
