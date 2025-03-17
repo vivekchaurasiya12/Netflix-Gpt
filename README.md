@@ -1,13 +1,10 @@
-<<<<<<< HEAD
+
 # Netflix-GPT
-=======
+
 # Netflix-GPT 🎥
->>>>>>> 050b9540fddec78c7ccc881c7f402c82892b8c8a
 
 Netflix-GPT is a React-based web application that mimics Netflix's functionality while integrating GPT-powered movie suggestions. The app allows users to browse movies, watch trailers, and get AI-powered movie recommendations. It is built with React, Vite, TailwindCSS, Firebase, and TMDB API.
-
 ---
-
 ## Features
 
 ### Authentication
@@ -33,11 +30,11 @@ Netflix-GPT is a React-based web application that mimics Netflix's functionality
 - **Responsive Design**: Adjusts layout for small and large screens.
 
 ### Netflix-GPT
-<<<<<<< HEAD
+
 - **Search Bar**: Allows users to search for movies using GPT-powered suggestions.
 - **Movie Suggestions**:
   - Fetches movie suggestions from TMDB based on GPT input.
-=======
+
 - **Search Bar**: Allows users to search for movies using AI-powered suggestions.
 - **Movie Suggestions**:
   - Fetches movie suggestions from TMDB based on GEMINI input.
@@ -102,8 +99,7 @@ Netflix-GPT is a React-based web application that mimics Netflix's functionality
    npm install
 
 3. Start the development server:
-<<<<<<< HEAD
    npm run dev
-=======
-   npm run dev
->>>>>>> 050b9540fddec78c7ccc881c7f402c82892b8c8a
+
+
+
