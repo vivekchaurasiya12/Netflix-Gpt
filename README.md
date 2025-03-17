@@ -1,4 +1,4 @@
-# Netflix-GPT
+# Netflix-GPT 🎥
 
 Netflix-GPT is a React-based web application that mimics Netflix's functionality while integrating GPT-powered movie suggestions. The app allows users to browse movies, watch trailers, and get AI-powered movie recommendations. It is built with React, Vite, TailwindCSS, Firebase, and TMDB API.
 
