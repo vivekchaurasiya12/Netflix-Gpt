@@ -54,8 +54,8 @@ const Header = () => {
        
        {user &&
     //    this div will render when user is either login or signup then it will show the signout button
-        <div className="flex justify-center items-center gap-2 mt-4 sm:mt-0">
-            {showGptSearch &&  <select className="bg-gray-500 text-white p-1 rounded-2xl text-sm sm:text-base" onChange={handleLanguageChange}>
+        <div className="flex justify-center items-center gap-2 mt-1 sm:mt-0">
+            {showGptSearch &&  <select className="bg-gray-500 text-whitepx-3 py-1 rounded-2xl text-sm sm:text-base" onChange={handleLanguageChange}>
                 {
                     SUPPORTED_LANGUAGES.map((language)=>(
                         <option key = {language.label} value={language.identifier} >{language.label}</option>
@@ -65,7 +65,7 @@ const Header = () => {
             </select>}
            
 
-        <button onClick={handleGptSearchClick} className="bg-red-500 text-white  px-3 py-1 rounded-2xl text-xs sm:text-base">{showGptSearch ?  "Home Page":"GPT Search" } </button>
+        <button onClick={handleGptSearchClick} className="bg-red-500 text-white  px-3 py-1 rounded-2xl text-xs sm:text-base">{showGptSearch ?  "Home":"GPT Search" } </button>
       
         <button onClick={handleSignout} className="bg-red-500 text-white px-3 py-1 rounded-2xl text-xs sm:text-base">
             Sign Out

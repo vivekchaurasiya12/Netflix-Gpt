@@ -9,7 +9,7 @@ const GptSearch = () => {
                     <img
                       src={BACKGROUND_IMAGE}
                       alt="Netflix Background"
-                      className="w-full min-h-screen"
+                      className="w-full min-h-screen object-cover"
                     />
                   </div>
        <GptSearchBar/>
